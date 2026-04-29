@@ -28,7 +28,7 @@ public class Content {
 
     public Content() { }
 
-    public Content(Album album, ContentId id, Media media) {
+    public Content(ContentId id, Media media, Album album) {
         this.album = album;
         this.id = id;
         this.media = media;

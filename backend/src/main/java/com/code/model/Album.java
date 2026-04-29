@@ -36,12 +36,12 @@ public class Album {
 
     public Album () { }
 
-    public Album(String description, String title) {
+    public Album(String title, String description) {
         this.description = description;
         this.title = title;
     }
 
-    public Album(String description, int id, String title) {
+    public Album(int id, String title, String description) {
         this.description = description;
         this.id = id;
         this.title = title;

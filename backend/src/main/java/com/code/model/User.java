@@ -39,6 +39,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Album> albums;
 
+    @OneToMany(mappedBy = "user")
+    private List<Subscription> subscriptions;
+
     public User() { }
 
     public User(UUID id, String username, String hash, String email, LocalDateTime created) {
@@ -103,6 +106,14 @@ public class User {
 
     public void setAlbums(List<Album> albums) {
         this.albums = albums;
+    }
+
+    public List<Subscription> getSubscriptions() {
+        return subscriptions;
+    }
+
+    public void setSubscriptions(List<Subscription> subscriptions) {
+        this.subscriptions = subscriptions;
     }
 
 }
