@@ -26,7 +26,7 @@ function Header() {
     ];
 
     return (
-        <AppBar className={`w-full h-18 p-0! border-b ${theme === "light" ? 'bg-zinc-100!' : 'bg-zinc-950! border-zinc-900'}`} position="sticky" color="primary">
+        <AppBar className={`w-full h-18 p-0! border-b ${theme === "light" ? 'bg-zinc-100!' : 'bg-zinc-950! border-zinc-900'}`} color="primary">
             <Stack className="size-full items-center" direction={"row"}>
                 <Box className="flex-3/20 h-full grow-0 shrink-0 place-content-center">
                     <Box className="w-fit h-2/3 rounded-sm px-2 justify-self-center">

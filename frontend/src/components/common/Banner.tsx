@@ -1,15 +1,19 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { HomeContext } from "../../contexts/HomeContext";
 
 function Banner() {
     const themeContext = useContext(ThemeContext);
     if (!themeContext) return null;
     const { theme } = themeContext;
 
+    const homeContext = useContext(HomeContext);
+    if (!homeContext) return null;
+    const { heroRef } = homeContext;
+
     return (
-        <Stack className="size-full justify-center items-center gap-2" direction={"row"} component={Link} to={"/"}>
+        <Stack className="size-full justify-center items-center gap-2 cursor-pointer" direction={"row"} onClick={() => heroRef.current.scrollIntoView({ behavior: "smooth" })}>
             <Box className="aspect-square grow-0 shrink-0">
                 <Box className="aspect-square object-contain size-6" component={"img"} src={"/src/assets/images/banner-icon.png"}/>
             </Box>
