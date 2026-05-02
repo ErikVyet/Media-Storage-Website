@@ -17,7 +17,7 @@ function RippleInput({ disableRipple = false, disableUnderline = false }: Ripple
 
     return (
         <Stack className={`relative size-full ${disableUnderline ? '' : 'border-b'} ${theme === "light" ? 'border-zinc-700' : 'border-zinc-100'}`} direction={"row"}>
-            <Input className={`${theme === "light" ? 'text-zinc-700!' : 'text-zinc-100!'}`} disableUnderline onFocus={() => setIsFocusing(true)} onBlur={() => setIsFocusing(false)} />
+            <Input className={`${theme === "light" ? 'text-zinc-700!' : 'text-zinc-100!'}`} disableUnderline onFocus={() => setIsFocusing(true)} onBlur={() => setIsFocusing(false)} fullWidth />
             {!disableRipple && <Box className="absolute -bottom-px left-0 w-full border-b border-blue-500" component={motion.div} initial={{ scaleX: 0, originX: 0.5 }} animate={{ scaleX: isFocusing ? 1 : 0 }} transition={{ duration: 0.2 }} />}
         </Stack>
     );

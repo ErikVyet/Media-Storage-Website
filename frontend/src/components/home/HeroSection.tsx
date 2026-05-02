@@ -24,7 +24,7 @@ function HeroSection() {
             <Typography className={`w-1/2 grow-0 shrink-0 text-center ${theme === "light" ? 'text-zinc-700' : 'text-zinc-300'}`} variant="subtitle1" component={motion.span} initial={{ opacity: 0, originX: 0.5 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} viewport={{ once: true }}>
                 From first steps to graduation, every memory deserves a home. Our secure vault doesn't just store your photos—it protects your legacy, keeping your stories safe, organized, and ready to rediscover for years to come.
             </Typography>
-            <Button className="bg-blue-600! normal-case!" href={""} variant="contained" endIcon={<ArrowRightAltOutlined/>}>Start Your Gallery</Button>
+            <Button className="bg-blue-600! normal-case!" href={"/"} variant="contained" endIcon={<ArrowRightAltOutlined/>} draggable={false}>Start Your Gallery</Button>
         </Stack>
     );
 }
