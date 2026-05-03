@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useLayoutEffect, useState } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { Box, Stack, Typography } from "@mui/material";
 import { motion } from "motion/react";
 import { Api, Collections, Key, PersonOutlined } from "@mui/icons-material";
-import DatabaseIcon from "../common/DatabaseIcon";
+import Icon from "../common/Icon";
 
 function DataApiFeatureCard() {
     const themeContext = useContext(ThemeContext);
@@ -16,7 +16,7 @@ function DataApiFeatureCard() {
     const [isAnimating, setIsAnimating] = useState(true);
     const [isAnimating2, setIsAnimating2] = useState(false);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const interval = setInterval(() => 
             setIsAnimating(true), 
             (keyAnimationTimer + dataAnimationTimer) * 1000
@@ -32,13 +32,13 @@ function DataApiFeatureCard() {
             </Stack>
             <Typography className="text-sm! w-full leading-relaxed text-zinc-500" component={motion.span} initial={{ y: 10, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 1 }} viewport={{ once: true }}><span className={`text-sm! ${theme === "light" ? 'text-zinc-900' : 'text-zinc-200'}`}>Safe and scalable photo links.</span><br/>Serve your images securely with signed URLs and tokens that prevent unauthorized hotlinking.</Typography>
             <Box className="flex-1 w-full place-content-center">
-                <Stack className="relative w-full h-3/5 justify-center items-center gap-2" direction={"row"}>
+                <Stack className="relative w-full h-3/5 justify-center items-center gap-2" direction={"row"} component={motion.div} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} viewport={{ once: true }}>
                     <PersonOutlined className={`scale-120 aspect-square text-zinc-500`}/>
                     <Box className="relative flex-2/3 grow-0 shrink-0 border border-dashed border-zinc-500">
                         <Key className={`absolute left-0 -top-3 rounded-sm aspect-square text-yellow-400 ${theme === "light" ? 'bg-zinc-200' : 'bg-neutral-900'} ${isAnimating ? 'visible' : 'invisible'}`} component={motion.svg} initial={{ left: "0%" }} animate={{ left: isAnimating ? "90%" : "0%" }} transition={{ duration: isAnimating ? keyAnimationTimer : 0, ease: "linear" }} onAnimationComplete={() => { setIsAnimating(false); setIsAnimating2(true); }}/>
                         <Collections className={`absolute right-0 -top-3 rounded-sm aspect-square text-zinc-500 ${theme === "light" ? 'bg-zinc-200' : 'bg-neutral-900'} ${!isAnimating && isAnimating2 ? 'visible' : 'invisible'}`} component={motion.svg} initial={{ right: "0%" }} animate={{ right: !isAnimating && isAnimating2 ? "90%" : "0%" }} transition={{ duration: isAnimating2 ? dataAnimationTimer : 0, ease: "linear" }} onAnimationComplete={() => setIsAnimating2(false)}/>
                     </Box>
-                    <DatabaseIcon className="size-7 aspect-square invert-50" />
+                    <Icon className="size-7 aspect-square invert-50" src={"/src/assets/images/database.png"} />
                 </Stack>
             </Box>
         </Stack>

@@ -3,6 +3,7 @@ import HeroSection from "../components/home/HeroSection";
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 import FeatureSection from "../components/home/FeatureSection";
+import TechnologySection from "../components/home/TechnologySection";
 
 function Home() {
     const themeContext = useContext(ThemeContext);
@@ -13,6 +14,7 @@ function Home() {
         <Container className={`min-h-screen h-fit max-h-max ${theme === "light" ? 'bg-zinc-100' : 'bg-neutral-950'}`} maxWidth={false}>
             <HeroSection />
             <FeatureSection />
+            <TechnologySection />
         </Container>
     );
 }

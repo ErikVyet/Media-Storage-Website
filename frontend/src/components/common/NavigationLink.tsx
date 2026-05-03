@@ -18,7 +18,7 @@ function NavigationLink({ label, url }: NavigationLinkProps) {
 
     return (
         <Box className="relative" onPointerEnter={() => setIsHovering(true)} onPointerLeave={() => setIsHovering(false)}>
-            <Link className={`font-semibold! ${theme === "light" ? 'text-zinc-800' : 'text-zinc-200'}`} to={url} draggable={false}>{label}</Link>
+            <Link className={`font-semibold! whitespace-nowrap ${theme === "light" ? 'text-zinc-800' : 'text-zinc-200'}`} to={url} draggable={false}>{label}</Link>
             <Box className={`absolute rounded-full w-full -bottom-1 border-b ${theme === "light" ? 'border-zinc-800' : 'border-zinc-200'}`} component={motion.div} initial={{ scaleX: 0, originX: 0.5 }} animate={{ scaleX: isHovering ? 1 : 0 }} transition={{ duration: 0.2 }} />
         </Box>
     );
