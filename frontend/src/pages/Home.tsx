@@ -5,6 +5,7 @@ import { ThemeContext } from "../contexts/ThemeContext";
 import FeatureSection from "../components/home/FeatureSection";
 import TechnologySection from "../components/home/TechnologySection";
 import ExampleSection from "../components/home/ExampleSection";
+import DifferentiationSection from "../components/home/DifferentiationSection";
 
 function Home() {
     const themeContext = useContext(ThemeContext);
@@ -16,6 +17,7 @@ function Home() {
             <HeroSection />
             <FeatureSection />
             <ExampleSection />
+            <DifferentiationSection />
             <TechnologySection />
         </Container>
     );
