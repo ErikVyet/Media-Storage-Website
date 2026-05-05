@@ -13,7 +13,7 @@ function Banner() {
     const { heroRef } = homeContext;
 
     return (
-        <Stack className="size-full justify-center items-center gap-2 cursor-pointer" direction={"row"} onClick={() => heroRef.current.scrollIntoView({ behavior: "smooth" })}>
+        <Stack className="size-fit justify-center items-center gap-2 cursor-pointer" direction={"row"} onClick={() => heroRef.current.scrollIntoView({ behavior: "smooth" })}>
             <Box className="aspect-square grow-0 shrink-0">
                 <Box className="aspect-square object-contain size-6" component={"img"} src={"/src/assets/images/banner-icon.png"} draggable={false}/>
             </Box>
