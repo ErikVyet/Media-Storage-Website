@@ -6,6 +6,7 @@ import Banner from "./Banner";
 import UserProfilePopover from "./UserProfilePopover";
 import PlanButton from "./PlanButton";
 import Navbar from "./Navbar";
+import { Plan } from "../../enums/Plan";
 
 function Header() {
     const themeContext = useContext(ThemeContext);
@@ -26,7 +27,7 @@ function Header() {
     ];
 
     return (
-        <AppBar className={`w-full h-18 p-0! border-b ${theme === "light" ? 'bg-zinc-100!' : 'bg-zinc-950! border-zinc-900'}`} color="primary">
+        <AppBar className={`w-full h-18 p-0! border-b ${theme === "light" ? 'bg-zinc-100!' : 'bg-zinc-950! border-zinc-900'}`}>
             <Stack className="size-full items-center" direction={"row"}>
                 <Box className="flex-3/20 h-full grow-0 shrink-0 place-content-center">
                     <Box className="w-fit h-2/3 rounded-sm px-2 justify-self-center place-content-center">
@@ -45,7 +46,7 @@ function Header() {
                             <Avatar className="size-8! border border-zinc-400 cursor-pointer justify-self-center" src={"/src/assets/images/duck.jpg"} onClick={handleOpenMenu}/>
                         }
                     </Tooltip>
-                    <PlanButton plan={"pro"}/>
+                    <PlanButton plan={Plan.Pro}/>
                     <UserProfilePopover guest={guest} anchorElement={anchorEl} setAnchorElement={setAnchorEl} horizontal="left" vertical="bottom"/>
                 </Stack>
             </Stack>

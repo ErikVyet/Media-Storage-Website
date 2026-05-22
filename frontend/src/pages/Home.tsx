@@ -6,7 +6,7 @@ import FeatureSection from "../components/home/FeatureSection";
 import TechnologySection from "../components/home/TechnologySection";
 import ExampleSection from "../components/home/ExampleSection";
 import DifferentiationSection from "../components/home/DifferentiationSection";
-import CtaSection from "../components/home/CtaSection";
+import CtaSection from "../components/common/CtaSection";
 
 function Home() {
     const themeContext = useContext(ThemeContext);

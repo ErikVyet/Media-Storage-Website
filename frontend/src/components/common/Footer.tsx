@@ -12,12 +12,12 @@ function Footer() {
     const { theme } = themeContext;
 
     const socials = [
-        { icon: <X/>, url: "" },
-        { icon: <GitHub />, url: "" },
-        { icon: <Facebook />, url: "" },
-        { icon: <YouTube />, url: "" },
-        { icon: <Instagram />, url: "" },
-        { icon: <Reddit />, url: "" }
+        { icon: <X/>, url: "/" },
+        { icon: <GitHub />, url: "/" },
+        { icon: <Facebook />, url: "/" },
+        { icon: <YouTube />, url: "/" },
+        { icon: <Instagram />, url: "/" },
+        { icon: <Reddit />, url: "/" }
     ];
     const linkList = [
         { 

@@ -3,6 +3,7 @@ import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 import { useState } from "react";
 import { ThemeContext } from "./contexts/ThemeContext";
+import Pricing from "./pages/Pricing";
 
 function App() {
     const localTheme: "dark" | "light" = localStorage.getItem("theme") as ("dark" | "light");
@@ -15,6 +16,7 @@ function App() {
                 <Routes>
                     <Route element={<MainLayout/>}>
                         <Route path="/" element={<Home/>}/>
+                        <Route path="/pricing" element={<Pricing/>} />
                     </Route>
                 </Routes>
             </BrowserRouter>
