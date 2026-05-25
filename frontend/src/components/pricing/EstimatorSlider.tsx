@@ -31,7 +31,7 @@ function EstimatorSlider({ label, min = 0, max = 10, step = 1, shiftStep = 10, h
             <Stack className="flex-[95px] grow-0 shrink-0 items-center justify-center gap-2" direction={"row"}>
                 <Typography className={`${theme === "light" ? 'text-zinc-700' : 'text-zinc-300'}`}>{label}</Typography>
                 {hint && (
-                    <Tooltip title={hint} placement="top">
+                    <Tooltip title={hint} placement="top" arrow>
                         <HelpOutlineOutlined className={`size-4! ${theme === "light" ? 'text-zinc-700' : 'text-zinc-300'}`}/>
                     </Tooltip>
                 )}

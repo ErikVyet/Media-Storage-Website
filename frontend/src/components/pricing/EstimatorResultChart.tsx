@@ -1,6 +1,7 @@
 import { Box, Tooltip, Typography } from "@mui/material";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { motion } from "motion/react";
 
 type EstimatorResultChartProps = {
     value: number,
@@ -14,9 +15,9 @@ function EstimatorResultChart({ value, unit, data }: EstimatorResultChartProps) 
     const { theme } = themeContext;
 
     return (
-        <Box className="size-full relative border-l border-b border-zinc-500 justify-self-center place-content-end">
+        <Box className="size-full relative border-l border-b border-zinc-500 justify-self-center place-content-end" component={motion.div} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} viewport={{ once: true }}>
             <Box className="size-full overflow-hidden">
-                <Tooltip title={`Your photos and videos will take up ${value.toPrecision(value.toFixed(0).toString().length + 2)} ${unit ?? ''} of storage`} placement="bottom">
+                <Tooltip title={`Your photos and videos will take up ${value.toPrecision(value.toFixed(0).toString().length + 2)} ${unit ?? ''} of storage`} placement="bottom" followCursor>
                     <Box className={`relative h-full bg-green-500 border-r-2 border-dashed ${theme === "light" ? 'border-zinc-700' : 'border-zinc-300'} transition-[width] duration-200`} sx={{ width: `${value / data[data.length - 1] * 100}%` }}/>
                 </Tooltip>
             </Box>

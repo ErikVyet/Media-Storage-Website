@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
 import PlanCardContent from "./PlanCardContent";
+import { motion } from "motion/react";
 
 type PlanCardProps = {
     header: string,
@@ -19,7 +20,7 @@ function PlanCard({ header, subheader, price, buttonContent, title, contents, is
     const { theme } = themeContext;
 
     return (
-        <Stack className={`flex-3/10 min-h-9/10 grow-0 shrink-0 p-5 gap-4 border rounded-xl ${theme === "light" ? 'bg-zinc-200 border-zinc-300 hover:border-zinc-400' : 'bg-zinc-900 border-neutral-800 hover:border-neutral-700'} duration-300`}>
+        <Stack className={`flex-3/10 min-h-9/10 grow-0 shrink-0 p-5 gap-4 border rounded-xl ${theme === "light" ? 'bg-zinc-200 border-zinc-300 hover:border-zinc-400' : 'bg-zinc-900 border-neutral-800 hover:border-neutral-700'} duration-300`} component={motion.div} initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, ease: "linear" }} viewport={{ once: true }}>
             <Stack className="gap-3 flex-[240px] grow-0 shrink-0">
                 <Stack className="items-center justify-between gap-2" direction={"row"}>
                     <Typography className={`capitalize ${theme === "light" ? 'text-zinc-700' : 'text-zinc-300'}`} variant="h5">{header}</Typography>

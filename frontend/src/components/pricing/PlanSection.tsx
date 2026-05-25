@@ -1,10 +1,16 @@
-import { Box, Container, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { Plan } from "../../enums/Plan";
 import PlanCard from "./PlanCard";
+import { South } from "@mui/icons-material";
+import { motion } from "motion/react";
 
-function PlanSection() {
+type PlanSectionProps = {
+    compareSectionRef: React.RefObject<HTMLDivElement>;
+}
+
+function PlanSection({ compareSectionRef }: PlanSectionProps) {
     const themeContext = useContext(ThemeContext);
     if (!themeContext) return null;
     const { theme } = themeContext;
@@ -64,14 +70,17 @@ function PlanSection() {
         <Container className="w-full! max-h-max p-0! m-0!" maxWidth={false}>
             <Box className="h-18"/>
             <Stack className="w-full h-50 items-center justify-center gap-4">
-                <Typography className={`${theme === "light" ? 'text-zinc-700' : 'text-zinc-300'}`} variant="h4">Safe, stunning storage that grows with you</Typography>
-                <Typography className="text-zinc-500 text-lg!">Keep your life’s gallery secure. Start with a free tier and upgrade only when you need more space</Typography>
+                <Typography className={`${theme === "light" ? 'text-zinc-700' : 'text-zinc-300'}`} variant="h4" component={motion.span} initial={{ x: -20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 1 }} viewport={{ once: true }}>Safe, stunning storage that grows with you</Typography>
+                <Typography className="text-zinc-500 text-lg!" component={motion.span} initial={{ x: 20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 1 }} viewport={{ once: true }}>Keep your life’s gallery secure. Start with a free tier and upgrade only when you need more space</Typography>
             </Stack>
             <Container className="min-h-screen max-h-max items-center justify-evenly" component={Stack} direction={"row"}>
                 {plans.map((plan, index) =>
                     <PlanCard header={plan.header} subheader={plan.subheader} price={plan.price} buttonContent={plan.buttonContent} title={plan.title} contents={plan.contents} isPopular={plan.isPopular} key={index}/>
                 )}
             </Container>
+            <Box className="justify-self-center place-content-center py-8" component={motion.div} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} viewport={{ once: true }}>
+                <Button className="normal-case! text-xs! text-blue-500! bg-transparent! border-blue-500! hover:opacity-80 transition-opacity! duration-200" variant="outlined" endIcon={<South className="text-xs!"/>} onClick={() => compareSectionRef.current.scrollIntoView({ behavior: "smooth" })}>Compare Plans</Button>
+            </Box>
         </Container>
     );
 }

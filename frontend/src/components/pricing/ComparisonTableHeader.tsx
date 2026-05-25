@@ -1,6 +1,7 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { motion } from "motion/react";
 
 type ComparisonTableHeaderProps = {
     header: string,
@@ -15,7 +16,7 @@ function ComparisonTableHeader({ header, price, buttonContent, buttonUrl = "/" }
     const { theme } = themeContext;
     
     return (
-        <Stack className="size-full px-4 gap-2">
+        <Stack className="size-full px-4 gap-2" component={motion.div} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} viewport={{ once: true }}>
             <Stack className="items-center justify-between" direction={"row"}>
                 <Typography className={`${theme === "light" ? 'text-zinc-700' : 'text-zinc-300'}`} variant="h6">{header}</Typography>
                 <Stack className="items-center justify-center gap-1" direction={"row"}>

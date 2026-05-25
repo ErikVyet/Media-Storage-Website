@@ -3,8 +3,13 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import { Box, Container, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { Bolt, Check, Remove, Storage } from "@mui/icons-material";
 import ComparisonTableHeader from "./ComparisonTableHeader";
+import { motion } from "motion/react";
 
-function CompareSection() {
+type CompareSectionProps = {
+    ref?: React.RefObject<HTMLDivElement>;
+}
+
+function CompareSection({ ref }: CompareSectionProps) {
     const themeContext = useContext(ThemeContext);
     if (!themeContext) return null;
     const { theme } = themeContext;
@@ -130,9 +135,9 @@ function CompareSection() {
     ];
 
     return (
-        <Container className="min-h-screen max-h-max">
-            <Box className="h-40 place-content-end">
-                <Typography className={`h-2/5 justify-self-center ${theme === "light" ? 'text-zinc-700' : 'text-zinc-300'}`} variant="h4">Comparison</Typography>
+        <Container className="min-h-screen max-h-max" ref={ref}>
+            <Box className="h-40 place-content-end text-center">
+                <Typography className={`h-2/5 justify-self-center ${theme === "light" ? 'text-zinc-700' : 'text-zinc-300'}`} variant="h4" component={motion.div} initial={{ y: 10, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 1 }} viewport={{ once: true }}>Comparison</Typography>
             </Box>
             <TableContainer>
                 <Table sx={{ '& .MuiTableCell-root': { borderColor: "gray" }, '& .MuiTableCell-head': { borderBottom: "none" } }}>
@@ -148,7 +153,7 @@ function CompareSection() {
                     </TableHead>
                     <TableBody>
                         {tableContents.map((content, index) =>
-                            <TableRow key={index}>
+                            <TableRow key={index} component={motion.tr} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} viewport={{ once: true }}>
                                 <TableCell className={`text-xs! ${theme === "light" ? 'text-zinc-700!' : 'text-zinc-300!'}`}>{content.criteria}</TableCell>
                                 <TableCell className={`text-xs! ${theme === "light" ? 'text-zinc-700!' : 'text-zinc-300!'}`}>{content.free}</TableCell>
                                 <TableCell className={`text-xs! ${theme === "light" ? 'text-zinc-700!' : 'text-zinc-300!'}`}>{content.plus}</TableCell>
