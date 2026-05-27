@@ -2,7 +2,6 @@ import { Box, Stack, Typography } from "@mui/material";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { HomeContext } from "../../contexts/HomeContext";
-import { useNavigate } from "react-router-dom";
 
 function Banner() {
     const themeContext = useContext(ThemeContext);
@@ -13,14 +12,12 @@ function Banner() {
     if (!homeContext) return null;
     const { heroRef } = homeContext;
 
-    const navigate = useNavigate();
-
     const handleClick = () => {
         if (heroRef.current != null) {
             heroRef.current.scrollIntoView({ behavior: "smooth" });
         }
         else {
-            navigate("/");
+            window.location.href = "/";
         }
     }
 
