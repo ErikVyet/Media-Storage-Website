@@ -36,8 +36,6 @@ function DrawerMesh({ geometry, material, position = new Vector3(0, 0, 0), scale
             // Calculate spring physics vectors
             const distance = new Vector3().subVectors(targetPosition, currentPos.current);
             const force = distance.multiplyScalar(stiffness);
-
-            // Calculate spring physics vectors
             velocity.current.add(force).multiplyScalar(damping);
             
             // Step our position tracker forward cleanly

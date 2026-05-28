@@ -11,9 +11,13 @@ import CaseMesh from "./mesh/CaseMesh";
 import ComputerMesh from "./mesh/ComputerMesh";
 import KeyboardMesh from "./mesh/KeyboardMesh";
 import CactusMesh from "./mesh/CactusMesh";
+import { useState } from "react";
+import ComputerScreenMesh from "./mesh/ComputerScreenMesh";
 
 function OfficeScene() {
     const { nodes } = useGLTF("/src/assets/models/office.glb");
+
+    const [isKeyPressed, setIsKeyPressed] = useState(false);
     
     const Cactus_mCactus_0 = { mesh: nodes.Cactus_mCactus_0 as Mesh, position: new Vector3(-3.75, 0, 3.72), scale: new Vector3(1, 1, 1), rotation: new Euler(0, 0, -0.5) };
     
@@ -38,7 +42,7 @@ function OfficeScene() {
     const drawer_mTable_0 = { mesh: nodes.drawer_mTable_0 as Mesh, position: new Vector3(-3.415, 0.35, 0.7), scale: new Vector3(1, 1, 1), rotation: new Euler(0, 0, 0) };
     const drawer2_mTable_0 = { mesh: nodes.drawer2_mTable_0 as Mesh, position: new Vector3(-3.415, 0.35, 0.7), scale: new Vector3(1, 1, 1), rotation: new Euler(0, 0, 0) };
     const drawer3_mTable_0 = { mesh: nodes.drawer3_mTable_0 as Mesh, position: new Vector3(-3.415, 0.35, 0.7), scale: new Vector3(1, 1, 1), rotation: new Euler(0, 0, 0) };
-
+    
     return (
         <group position={[1, 0, -2]} rotation={[-Math.PI / 2, 0, 0]} >
             <TableMesh geometry={Table_mTable_0.mesh.geometry} material={Table_mTable_0.mesh.material} position={Table_mTable_0.position} scale={Table_mTable_0.scale} rotation={Table_mTable_0.rotation} />
@@ -56,7 +60,8 @@ function OfficeScene() {
             <ChairSpineMesh geometry={ChairSpine_mChair_0.mesh.geometry} material={ChairSpine_mChair_0.mesh.material} position={ChairSpine_mChair_0.position} scale={ChairSpine_mChair_0.scale} rotation={ChairSpine_mChair_0.rotation} />
             <CaseMesh geometry={Case_mPC_0.mesh.geometry} material={Case_mPC_0.mesh.material} position={Case_mPC_0.position} scale={Case_mPC_0.scale} rotation={Case_mPC_0.rotation} />
             <ComputerMesh geometry={Computer_mPC_0.mesh.geometry} material={Computer_mPC_0.mesh.material} position={Computer_mPC_0.position} scale={Computer_mPC_0.scale} rotation={Computer_mPC_0.rotation} />
-            <KeyboardMesh geometry={Keyboard_mPC_0.mesh.geometry} material={Keyboard_mPC_0.mesh.material} position={Keyboard_mPC_0.position} scale={Keyboard_mPC_0.scale} rotation={Keyboard_mPC_0.rotation} />
+            <ComputerScreenMesh isActive={isKeyPressed}/>
+            <KeyboardMesh geometry={Keyboard_mPC_0.mesh.geometry} material={Keyboard_mPC_0.mesh.material} position={Keyboard_mPC_0.position} scale={Keyboard_mPC_0.scale} rotation={Keyboard_mPC_0.rotation} isKeyPressed={isKeyPressed} setIsKeyPressed={setIsKeyPressed} />
             <CactusMesh geometry={Cactus_mCactus_0.mesh.geometry} material={Cactus_mCactus_0.mesh.material} position={Cactus_mCactus_0.position} scale={Cactus_mCactus_0.scale} rotation={Cactus_mCactus_0.rotation} />
         </group>
     );
