@@ -13,7 +13,7 @@ type TableMeshProps = {
 function TableMesh({ geometry, material, position = new Vector3(0, 0, 0), scale = new Vector3(1, 1, 1), rotation = new Euler(0, 0, 0) }: TableMeshProps) {
     return (
         <RigidBody type="fixed" colliders={"trimesh"} position={position} scale={scale} rotation={rotation}>
-            <mesh geometry={geometry} material={material} onPointerOver={(_event: ThreeEvent<MouseEvent>) => _event.stopPropagation()}/>
+            <mesh geometry={geometry} material={material} onPointerOver={(_event: ThreeEvent<MouseEvent>) => _event.stopPropagation()} onClick={(_event: ThreeEvent<MouseEvent>) => _event.stopPropagation()}/>
         </RigidBody>
     );
 }

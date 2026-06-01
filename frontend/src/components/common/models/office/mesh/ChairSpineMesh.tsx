@@ -65,7 +65,7 @@ function ChairSpineMesh({ geometry, material, position = new Vector3(0, 0, 0), s
 
     return (
         <RigidBody ref={rigidBodyRef} type="kinematicPosition" position={position} scale={scale} rotation={rotation} colliders={"trimesh"}>
-            <mesh geometry={geometry} material={material} onPointerOver={handlePointerOver} onPointerOut={handlePointerOut} onPointerDown={handlePointerDown} onPointerUp={handlePointerUp}>
+            <mesh geometry={geometry} material={material} onPointerOver={handlePointerOver} onPointerOut={handlePointerOut} onPointerDown={handlePointerDown} onPointerUp={handlePointerUp} onClick={(_event: ThreeEvent<MouseEvent>) => _event.stopPropagation()}>
                 {isHovered && <Edges color={Color.NAMES.aqua} />}
             </mesh>
         </RigidBody>
